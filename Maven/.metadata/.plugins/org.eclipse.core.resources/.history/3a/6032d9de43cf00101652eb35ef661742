@@ -1,0 +1,63 @@
+package com.demo.test;
+
+public class ManyToMany {
+
+	public static void main(String[] args) {
+		
+				try (Scanner sc = new Scanner(System.in)) {
+					CourseServices cservice = new CourseServicesImpl();
+					StudentServices sservice = new StudentServicesImpl();
+					int choice = 0;
+					do {
+						System.out.println("1. Show One to Many RelationShip( course ---- student )");
+						System.out.println("2. Show Many to One RelationShip( student ---- course )");
+						System.out.println("3. Get data One to Many RelationShip");
+						System.out.println("4. Get data Many to One RelationShip");
+						System.out.println("5. Exit");
+						System.out.print("Enter Choice : ");
+						choice = sc.nextInt();
+						switch (choice) {
+						case 1:
+							boolean status = cservice.showOneToMany();
+							if (status) {
+								System.out.println("Result Successed check database....");
+							} else {
+								System.out.println("Logical mistake check dao layer");
+							}
+							break;
+						case 3:
+							Set<Course> cset = cservice.getData();
+							if (!cset.isEmpty()) {
+								cset.forEach(System.out::println);
+							} else {
+								System.out.println("Logical mistake check dao layer");
+							}
+							break;
+						case 2:
+							status = sservice.showManyToOne();
+							if (status) {
+								System.out.println("Result Successed check database....");
+							} else {
+								System.out.println("Logical mistake check dao layer");
+							}
+							break;
+						case 4:
+							Set<Students> sset = sservice.getData();
+							if (!sset.isEmpty()) {
+								sset.forEach(System.out::println);
+							} else {
+								System.out.println("Logical mistake check dao layer");
+							}
+							break;
+						}
+					} while (choice != 5);
+
+				}
+
+			}
+
+		}
+
+}
+
+}

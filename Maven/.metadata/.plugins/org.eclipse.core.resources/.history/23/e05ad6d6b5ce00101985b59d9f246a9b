@@ -1,0 +1,31 @@
+package com.demo.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.demo.beans.Course;
+
+public class CourseDaoImpl implements CourseDao {
+	static SessionFactory sf;
+	static {
+		sf = HibernateConnect.getMySessionFactory();
+	}
+
+	@Override
+	public boolean showOneToMany(Course c) {
+		if (sf != null) {
+			try (Session session = sf.openSession()) {
+				Transaction tr = session.beginTransaction();
+				session.save(c);
+				tr.commit();
+				HibernateConnect.closeMySessionFactory();
+				return true;
+			} catch (Exception e) {
+				System.out.println("Error : " + e.getMessage());
+			}
+		}
+
+		return false;
+	}
+}

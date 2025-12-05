@@ -1,0 +1,55 @@
+package com.demo.test;
+
+import java.util.Scanner;
+import java.util.Set;
+
+import com.demo.beans.Carts;
+import com.demo.services.ManyToManyServices;
+import com.demo.services.ManyToManyServicesImpl;
+
+public class ManyToManyRelationship {
+
+	public static void main(String[] args) {
+		try (Scanner sc = new Scanner(System.in)) {
+			ManyToManyServices mservice = new ManyToManyServicesImpl();
+
+			int choice = 0;
+			do {
+				System.out.println("1. Show Many to Many RelationShip( cart <----> item )");
+				System.out.println("2. Get data Many to Many RelationShip");
+				System.out.println("3. Get data Many to Many RelationShip");
+				System.out.println("4. Exit");
+				System.out.print("Enter Choice : ");
+				choice = sc.nextInt();
+				switch (choice) {
+				case 1:
+					boolean status = mservice.showManyToMany();
+					if (status) {
+						System.out.println("Result Successed check database....");
+					} else {
+						System.out.println("Logical mistake check dao layer");
+					}
+					break;
+				case 2:
+					Set<Carts> cset = mservice.getData();
+					if (!cset.isEmpty()) {
+						cset.forEach(System.out::println);
+					} else {
+						System.out.println("Logical mistake check dao layer");
+					}
+					break;
+//				case 3:
+//					Set<Students> sset = sservice.getData();
+//					if (!sset.isEmpty()) {
+//						sset.forEach(System.out::println);
+//					} else {
+//						System.out.println("Logical mistake check dao layer");
+//					}
+//					break;
+				}
+			} while (choice != 4);
+
+		}
+
+	}
+}

@@ -1,0 +1,19 @@
+package com.demo.dao;
+
+import org.hibernate.SessionFactory;
+
+import com.demo.beans.Students;
+
+public class StudentDaoImpl implements StudentDao {
+	static SessionFactory sf;
+	static {
+		sf = HibernateConnect.getMySessionFactory();
+	}
+
+	@Override
+	public boolean showManyToOne(Students s) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

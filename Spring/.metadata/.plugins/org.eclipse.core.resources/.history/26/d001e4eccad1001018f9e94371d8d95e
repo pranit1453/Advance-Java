@@ -1,0 +1,26 @@
+package com.demo.config;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.demo")
+@EnableAspectJAutoProxy
+@PropertySource("classpath:db.properties")
+public class AppConfig implements WebMvcConfigurer {
+
+	private Environment env; // is injected automatically when you fetch properties with
+								// env.getProperty("key")
+
+	public DataSource dataSource() {
+
+	}
+}

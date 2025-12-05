@@ -1,0 +1,61 @@
+package com.demo.services;
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+import com.demo.beans.Carts;
+import com.demo.beans.Items;
+import com.demo.dao.ManyToManyDao;
+import com.demo.dao.ManyToManyDaoImpl;
+
+public class ManyToManyServicesImpl implements ManyToManyServices {
+	private ManyToManyDao mdao;
+
+	public ManyToManyServicesImpl() {
+		mdao = new ManyToManyDaoImpl();
+	}
+
+	@Override
+	public boolean showManyToMany() {
+		Set<Items> items = new HashSet<>();
+		Set<Carts> carts = new HashSet<>();
+		try (Scanner sc = new Scanner(System.in)) {
+			System.out.print("Enter amount of data to insert : ");
+			int n = sc.nextInt();
+			sc.nextLine();
+
+			for (int i = 0; i < n; i++) {
+				System.out.println("Enter data for " + (i + 1) + " item .");
+
+				System.out.print("Enter item id : ");
+				int iid = sc.nextInt();
+				sc.nextLine();
+
+				System.out.print("Enter item name : ");
+				String iname = sc.next();
+
+				System.out.print("Enter item quantity : ");
+				int iqty = sc.nextInt();
+				sc.nextLine();
+
+				System.out.print("Enter item price : ");
+				double iprice = sc.nextDouble();
+				sc.nextLine();
+
+				Items item = new Items(iid, iname, iqty, iprice);
+
+				System.out.println("Enter data for " + (i + 1) + " cart .");
+
+				System.out.print("Enter cart id : ");
+				int cid = sc.nextInt();
+				sc.nextLine();
+
+				System.out.print("Enter cart quantity : ");
+				int cqty = sc.nextInt();
+				sc.nextLine();
+			}
+		}
+		return false;
+	}
+}

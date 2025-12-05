@@ -1,0 +1,69 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "itemtable1")
+public class Items {
+	@Id
+	private int itemid;
+	private String itemname;
+	private int itemqty;
+	@ManyToMany
+	private Set<Carts> cset;
+
+	public Items() {
+		super();
+	}
+
+	public Items(int itemid, String itemname, int itemqty, Set<Carts> cset) {
+		super();
+		this.itemid = itemid;
+		this.itemname = itemname;
+		this.itemqty = itemqty;
+		this.cset = cset;
+	}
+
+	public int getItemid() {
+		return itemid;
+	}
+
+	public void setItemid(int itemid) {
+		this.itemid = itemid;
+	}
+
+	public String getItemname() {
+		return itemname;
+	}
+
+	public void setItemname(String itemname) {
+		this.itemname = itemname;
+	}
+
+	public int getItemqty() {
+		return itemqty;
+	}
+
+	public void setItemqty(int itemqty) {
+		this.itemqty = itemqty;
+	}
+
+	public Set<Carts> getCset() {
+		return cset;
+	}
+
+	public void setCset(Set<Carts> cset) {
+		this.cset = cset;
+	}
+
+	@Override
+	public String toString() {
+		return "Items [itemid=" + itemid + ", itemname=" + itemname + ", itemqty=" + itemqty + ", cset=" + cset + "]";
+	}
+
+}

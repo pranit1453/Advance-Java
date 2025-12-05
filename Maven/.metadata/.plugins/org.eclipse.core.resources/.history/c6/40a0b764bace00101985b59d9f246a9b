@@ -1,0 +1,11 @@
+package com.demo.dao;
+
+import org.hibernate.SessionFactory;
+
+public class StudentDaoImpl implements StudentDao {
+	static SessionFactory sf;
+	static {
+		sf = HibernateConnect.getMySessionFactory();
+	}
+
+}

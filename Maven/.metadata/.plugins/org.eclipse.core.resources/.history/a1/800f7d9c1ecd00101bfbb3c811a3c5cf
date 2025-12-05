@@ -1,0 +1,33 @@
+package com.demo.services;
+
+import java.util.Scanner;
+
+import com.demo.beans.Course;
+import com.demo.beans.Faculty;
+import com.demo.dao.CourseDao;
+import com.demo.dao.CourseDaoImpl;
+
+public class CourseServiceImpl implements CourseService {
+	private CourseDao cdao;
+	Scanner sc = new Scanner(System.in);
+
+	public CourseServiceImpl() {
+		cdao = new CourseDaoImpl();
+	}
+
+	@Override
+	public boolean insertDataThroughHibernate() {
+		System.out.print("Enter Course Name : ");
+		String cname = sc.next();
+		System.out.print("Enter Course Duration : ");
+		int duration = sc.nextInt();
+		System.out.print("Enter Faculty Name : ");
+		String fname = sc.next();
+		System.out.print("Enter Faculty Specialization : ");
+		String specs = sc.next();
+
+		Faculty f1 = new Faculty(fname, specs);
+		Course c1 = new Course(cname, duration, f1);
+		return cdao.insertDataThroughHibernate(c1);
+	}
+}

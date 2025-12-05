@@ -1,0 +1,27 @@
+package com.demo.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class MyController {
+
+	@GetMapping("/hello")
+	public String sayHello() {
+		return "hello";
+	}
+
+	@GetMapping("/welcome")
+	public ModelAndView sayWelcome() {
+		String msg = "Welcome Pranit";
+		return new ModelAndView("welcome", "message", msg);
+	}
+
+	public String testData(Model mymodel) {
+		mymodel.addAttribute("name", "Pranit");
+		mymodel.addAttribute("learning", "SpringMVC");
+		return "testdata";
+	}
+}

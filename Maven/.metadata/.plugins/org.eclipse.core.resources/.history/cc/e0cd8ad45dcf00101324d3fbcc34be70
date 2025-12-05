@@ -1,0 +1,19 @@
+package com.demo.beans;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "carttable")
+public class Carts {
+	@Id
+	private int cid;
+	private int cqty;
+	@ManyToMany(mappedBy = "carts")
+	private Set<Items> items = new HashSet<>();
+}

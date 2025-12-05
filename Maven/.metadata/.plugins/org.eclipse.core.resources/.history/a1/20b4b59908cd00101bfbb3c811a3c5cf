@@ -1,0 +1,28 @@
+package com.demo.test;
+
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class HiberationBasicsTest {
+
+	public static void main(String[] args) {
+
+		try (Scanner sc = new Scanner(System.in);
+				SessionFactory sf = new Configuration().configure().buildSessionFactory();
+				Session session = sf.openSession();) {
+			Transaction tr = session.beginTransaction();
+			System.out.print("Enter Course Name : ");
+			String cname = sc.next();
+			System.out.print("Enter Course Duration : ");
+			int duration = sc.nextInt();
+			
+			
+		}
+
+	}
+
+}

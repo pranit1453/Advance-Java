@@ -1,0 +1,9 @@
+package com.demo.dao;
+
+import com.demo.bea.Products;
+
+public interface InheritanceDao {
+
+	boolean showSingleType(Products p1, Products p2);
+
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="newuser" method="POST">
+
+		 <label>Username : </label>
+    <input type="text" name="uname" id="uname" placeholder="Enter Username" /><br />
+
+    <label>Password : </label>
+    <input type="password" name="pass" id="pass" placeholder="Enter Password" /><br />
+
+    <label>Email : </label>
+    <input type="text" name="email" id="email" placeholder="Enter Email" /><br />
+
+    <label for="male">Male</label>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="female">Female</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="other">Other</label>
+    <input type="radio" id="other" name="gender" value="other"><br />
+
+    <button type="submit" name="signup" id="signup">Create Account</button>
+		<a href="login.html">Back</a>
+
+	</form>
+</body>
+</html>

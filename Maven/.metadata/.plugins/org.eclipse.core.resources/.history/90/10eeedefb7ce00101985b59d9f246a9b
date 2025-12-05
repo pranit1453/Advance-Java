@@ -1,0 +1,9 @@
+package com.demo.dao;
+
+import com.demo.beans.Course;
+
+public interface CourseDao {
+
+	boolean showOneToMany(Course c);
+
+}

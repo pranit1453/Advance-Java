@@ -1,0 +1,36 @@
+package com.demo.test;
+
+import java.util.Scanner;
+
+import com.demo.services.CourseServices;
+import com.demo.services.CourseServicesImpl;
+import com.demo.services.StudentServices;
+import com.demo.services.StudentServicesImpl;
+
+public class CourseStudentRelationShip {
+
+	public static void main(String[] args) {
+		try (Scanner sc = new Scanner(System.in)) {
+			CourseServices cservice = new CourseServicesImpl();
+			StudentServices sservices = new StudentServicesImpl();
+			int choice = 0;
+			do {
+				System.out.println("1. Show One to Many RelationShip( course ---- student )");
+				System.out.println("2. Show Many to One RelationShip( student ---- course )");
+				System.out.println("3. Get data One to Many RelationShip");
+				System.out.println("4. Get data Many to One RelationShip");
+				System.out.println("5. Exit");
+				System.out.print("Enter Choice : ");
+				choice = sc.nextInt();
+				switch (choice) {
+				case 1:
+
+					break;
+				}
+			} while (choice != 5);
+
+		}
+
+	}
+
+}

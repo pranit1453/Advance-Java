@@ -1,0 +1,40 @@
+package com.demo.config;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.demo")
+@EnableAspectJAutoProxy
+@PropertySource("classpath:db.properties")
+public class AppConfig implements WebMvcConfigurer {
+
+	private Environment env; // is injected automatically when you fetch properties with
+								// env.getProperty("key")
+
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource ds = new DriverManagerDataSource();
+		ds.setDriverClassName(env.getProperty("db.driverClassName"));
+		ds.setUrl(env.getProperty("db.url"));
+		ds.setUsername(env.getProperty("db.username"));
+		ds.setPassword(env.getProperty("db.password"));
+		return ds;
+	}
+
+	@Bean
+	public JdbcTemplate jdbcTemplate(DataSource ds) {
+		return new JdbcTemplate(ds);
+	}
+}

@@ -1,0 +1,5 @@
+package com.demo.aop;
+@Aspect
+public class LoginAspect {
+
+}

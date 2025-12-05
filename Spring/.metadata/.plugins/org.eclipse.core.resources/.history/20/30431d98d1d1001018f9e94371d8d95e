@@ -1,0 +1,11 @@
+package com.demo.aop;
+
+import org.aopalliance.intercept.Joinpoint;
+import org.springframework.stereotype.Component;
+
+@Component
+
+public class LoginAspect {
+	@Before
+	public void logBefore(Joinpoint joinpoint)
+}

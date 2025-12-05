@@ -1,0 +1,53 @@
+package com.demo.test;
+
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.demo.beans.Course;
+import com.demo.beans.Faculty;
+
+public class HiberationBasicsTest {
+
+	public static void main(String[] args) {
+
+		try (Scanner sc = new Scanner(System.in);
+				SessionFactory sf = new Configuration().configure().buildSessionFactory();
+				Session session1 = sf.openSession();
+				Session session2 = sf.openSession();) {
+			Transaction tr1 = session1.beginTransaction();
+			System.out.print("Enter Course Name : ");
+			String cname = sc.next();
+			System.out.print("Enter Course Duration : ");
+			int duration = sc.nextInt();
+			System.out.print("Enter Faculty ID : ");
+			int id = sc.nextInt();
+			System.out.print("Enter Faculty Name : ");
+			String fname = sc.next();
+			System.out.print("Enter Faculty Specialization : ");
+			String specs = sc.next();
+
+			Faculty f1 = new Faculty(id, fname, specs);
+			Course c1 = new Course(cname, duration, f1);
+
+			session1.save(c1);
+			System.out.println(f1);
+			System.out.println(c1);
+			tr1.commit();
+
+			System.out.println("==========================================================");
+
+			Transaction tr2 = session2.beginTransaction();
+			Course c2 = session2.get(Course.class, 2);
+			System.out.println(c2);
+			tr2.commit();
+		} catch (Exception e) {
+			System.out.println("Error : " + e.getMessage());
+		}
+
+	}
+
+}

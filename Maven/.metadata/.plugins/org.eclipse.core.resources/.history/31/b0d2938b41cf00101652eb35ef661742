@@ -1,0 +1,9 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+public class Carts {
+	private int cartid;
+	private double cprice;
+	private int cartqty;
+}

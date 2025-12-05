@@ -1,0 +1,50 @@
+package com.demo.services;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+import com.demo.beans.NonPerishableProduct;
+import com.demo.beans.PerishableProduct;
+import com.demo.beans.Products;
+import com.demo.dao.InheritanceDao;
+import com.demo.dao.InheritanceDaoImpl;
+
+public class InheritanceServicesImpl implements InheritanceServices {
+	private InheritanceDao idao;
+
+	public InheritanceServicesImpl() {
+		idao = new InheritanceDaoImpl();
+	}
+
+	@Override
+	public boolean showSingleType() {
+		Products p1 = null;
+		Products p2 = null;
+		try (Scanner sc = new Scanner(System.in)) {
+			System.out.print("Enter Product id : ");
+			int pid = sc.nextInt();
+			System.out.print("Enter Product name : ");
+			String pname = sc.next();
+			System.out.print("Enter Product Quantity : ");
+			int pqty = sc.nextInt();
+			System.out.print("Enter Product Price : ");
+			double price = sc.nextDouble();
+			System.out.print("Enter Product Manufacturing Date (dd/mm/yyyy) : ");
+			String pmdt = sc.next();
+			LocalDate pmldt = LocalDate.parse(pmdt, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+			System.out.print("Enter Product Expiry Date for Perishable Product (dd/mm/yyyy) : ");
+			String pedt = sc.next();
+			LocalDate peldt = LocalDate.parse(pedt, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+			System.out.print("Enter Product Expiry Date for Non Perishable Product (dd/mm/yyyy) : ");
+			String npedt = sc.next();
+			LocalDate npeldt = LocalDate.parse(npedt, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+			p1 = new PerishableProduct(pid, pname, pqty, price, pmldt, peldt);
+			p2 = new NonPerishableProduct(pid, pname, pqty, price, pmldt, npeldt);
+		}
+		return idao.showSingleType(p1, p2);
+	}
+}

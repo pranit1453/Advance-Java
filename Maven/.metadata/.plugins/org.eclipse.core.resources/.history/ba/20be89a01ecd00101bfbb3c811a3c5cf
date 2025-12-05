@@ -1,0 +1,9 @@
+package com.demo.dao;
+
+import com.demo.beans.Course;
+
+public interface CourseDao {
+
+	boolean insertDataThroughHibernate(Course c1);
+
+}

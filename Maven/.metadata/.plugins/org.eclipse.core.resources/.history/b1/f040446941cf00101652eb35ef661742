@@ -1,0 +1,19 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "itemtable1")
+public class Items {
+	@Id
+	private int itemid;
+	private String itemname;
+	private int itemqty;
+	@ManyToMany(mappedBy="iset")
+	private Set<Carts> cset;
+}

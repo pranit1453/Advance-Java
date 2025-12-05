@@ -1,0 +1,23 @@
+package com.demo.beans;
+
+import java.time.LocalDate;
+
+public class Course {
+	private int cid;
+	private String cname;
+	private LocalDate startdate;
+	private Students stud;
+
+	public Course() {
+		super();
+	}
+
+	public Course(int cid, String cname, LocalDate startdate, Students stud) {
+		super();
+		this.cid = cid;
+		this.cname = cname;
+		this.startdate = startdate;
+		this.stud = stud;
+	}
+
+}

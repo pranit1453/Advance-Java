@@ -1,0 +1,42 @@
+package com.demo.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.demo.beans.Course;
+import com.demo.beans.Students;
+
+public class StudentDaoImpl implements StudentDao {
+	static SessionFactory sf;
+	static {
+		sf = HibernateConnect.getMySessionFactory();
+	}
+
+	@Override
+	public boolean showManyToOne(Students s) {
+		if (sf != null) {
+			try (Session session = sf.openSession()) {
+				Transaction tr = session.beginTransaction();
+				Course course = s.getCse();
+
+				if (course != null) {
+					Course existingcourse = session.get(Course.class, course.getCid());
+					if (existingcourse != null) {
+
+					} else {
+						session.saveOrUpdate(course);
+					}
+				}
+				session.save(s);
+				tr.commit();
+				return true;
+			} catch (Exception e) {
+				System.out.println("Error : " + e.getMessage());
+			}
+		}
+
+		return false;
+	}
+
+}

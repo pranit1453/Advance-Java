@@ -1,0 +1,12 @@
+package com.demo.services;
+
+import com.demo.dao.ManyToManyDao;
+import com.demo.dao.ManyToManyDaoImpl;
+
+public class ManyToManyServicesImpl implements ManyToManyServices {
+	private ManyToManyDao mdao;
+
+	public ManyToManyServicesImpl() {
+		mdao = new ManyToManyDaoImpl();
+	}
+}

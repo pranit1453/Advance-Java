@@ -1,0 +1,21 @@
+package com.demo.services;
+
+import java.util.Scanner;
+
+import com.demo.dao.CourseDao;
+import com.demo.dao.CourseDaoImpl;
+
+public class CourseServiceImpl implements CourseService {
+	private CourseDao cdao;
+	Scanner sc = new Scanner(System.in);
+
+	public CourseServiceImpl() {
+		cdao = new CourseDaoImpl();
+	}
+
+	@Override
+	public boolean insertDataThroughHibernate() {
+
+		return false;
+	}
+}

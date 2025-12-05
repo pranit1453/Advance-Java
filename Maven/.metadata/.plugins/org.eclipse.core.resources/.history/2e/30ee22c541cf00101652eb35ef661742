@@ -1,0 +1,10 @@
+package com.demo.beans;
+
+import java.util.Set;
+@Entity
+@Table(name="carttable1")
+public class Carts {
+	private int cartid;
+	private double cprice;
+	private int cartqty;
+}

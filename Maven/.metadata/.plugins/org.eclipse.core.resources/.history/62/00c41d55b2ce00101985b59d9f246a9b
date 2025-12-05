@@ -1,0 +1,62 @@
+package com.demo.services;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+import com.demo.beans.Course;
+import com.demo.beans.Students;
+import com.demo.dao.CourseDao;
+import com.demo.dao.CourseDaoImpl;
+
+public class CourseServicesImpl implements CourseServices {
+	private CourseDao cdao;
+
+	public CourseServicesImpl() {
+		cdao = new CourseDaoImpl();
+	}
+
+	Scanner sc = new Scanner(System.in);
+
+	@Override
+	public boolean showOneToMany() {
+		int cnt1 = 0;
+		int cnt2 = 0;
+		int cid = 0;
+		String cname = null;
+		LocalDate cldt = null;
+		int sid = 0;
+		String sname = null;
+		LocalDate sldt = null;
+		do {
+			cnt1++;
+			System.out.print("Enter course id : ");
+			cid = sc.nextInt();
+			System.out.print("Enter course name : ");
+			cname = sc.next();
+			System.out.print("Enter course start date (dd/MM/yyyy) : ");
+			String cdt = sc.next();
+			cldt = LocalDate.parse(cdt, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			System.out.println("----------------------------------------------------------");
+			System.out.print("Enter student id : ");
+			sid = sc.nextInt();
+			System.out.print("Enter Student name : ");
+			sname = sc.next();
+			System.out.print("Enter joining date (dd/mm/yyyy) : ");
+			String sdt = sc.next();
+			sldt = LocalDate.parse(sdt, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		} while (cnt1 > 3);
+		do {
+			cnt2++;
+			Course c = new Course(cid, cname, cldt);
+			Students s = new Students(sid, sname, sldt, c);
+			Set<Students> sset = new HashSet<>();
+			sset.add(s);
+			c.setSset(sset);
+		} while (cnt2 > 3);
+
+		return false;
+	}
+}

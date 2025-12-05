@@ -1,0 +1,8 @@
+package com.demo.beans;
+
+public class Course {
+	private int courseid;
+	private String coursename;
+	private int duration;
+	private Faculty faculty;
+}

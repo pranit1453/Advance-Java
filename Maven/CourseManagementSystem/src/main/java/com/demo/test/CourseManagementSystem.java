@@ -1,0 +1,48 @@
+package com.demo.test;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.demo.beans.Course;
+import com.demo.services.CourseService;
+import com.demo.services.CourseServiceImpl;
+
+public class CourseManagementSystem {
+
+	public static void main(String[] args) {
+		try (Scanner sc = new Scanner(System.in)) {
+			do {
+				System.out.println("1. Insert Data");
+				System.out.println("2. Show Data");
+				System.out.println("3. Update Data");
+				System.out.println("4. Delete Data");
+				System.out.println("5. Exit");
+				System.out.print("Choice : ");
+
+				CourseService cs = new CourseServiceImpl();
+				int choice = sc.nextInt();
+
+				switch (choice) {
+				case 1:
+					boolean status = cs.insertDataThroughHibernate();
+					if (status) {
+						System.out.println("Inserted Successfully...");
+					} else {
+						System.out.println("Error!!!!");
+					}
+					break;
+				case 2:
+					List<Course> clist = cs.displayData();
+					if (clist != null) {
+						clist.forEach(System.out::println);
+					}
+					break;
+				}
+			} while ("Exit".equals("Exit"));
+
+		} catch (Exception e) {
+			System.out.println("Error : " + e.getMessage());
+		}
+	}
+
+}

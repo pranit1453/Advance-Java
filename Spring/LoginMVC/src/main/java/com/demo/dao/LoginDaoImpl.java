@@ -1,0 +1,18 @@
+package com.demo.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class LoginDaoImpl implements LoginDao {
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	@Override
+	public boolean validate(String username, String password) {
+		String query = "Select count(*) from user where username=? and password=?";
+		Integer count = jdbcTemplate.queryForObject(query, Integer.class, username, password);
+		return count != null && count > 0;
+	}
+}

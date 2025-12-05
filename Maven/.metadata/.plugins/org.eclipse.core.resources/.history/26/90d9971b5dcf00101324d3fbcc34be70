@@ -1,0 +1,15 @@
+package com.demo.beans;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "carttable")
+public class Carts {
+	private int cid;
+	private int cqty;
+	private Set<Items> items = new HashSet<>();
+}

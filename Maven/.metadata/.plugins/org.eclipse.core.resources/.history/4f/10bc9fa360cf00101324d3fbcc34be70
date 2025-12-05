@@ -1,0 +1,30 @@
+package com.demo.services;
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+import com.demo.beans.Carts;
+import com.demo.beans.Items;
+import com.demo.dao.ManyToManyDao;
+import com.demo.dao.ManyToManyDaoImpl;
+
+public class ManyToManyServicesImpl implements ManyToManyServices {
+	private ManyToManyDao mdao;
+
+	public ManyToManyServicesImpl() {
+		mdao = new ManyToManyDaoImpl();
+	}
+
+	@Override
+	public boolean showManyToMany() {
+		Set<Items> items = new HashSet<>();
+		Set<Carts> carts = new HashSet<>();
+		try (Scanner sc = new Scanner(System.in)) {
+			System.out.print("Enter amount of data to insert : ");
+			int n = sc.nextInt();
+			sc.nextLine();
+		}
+		return false;
+	}
+}

@@ -1,0 +1,11 @@
+package com.demo.aop;
+
+import org.springframework.stereotype.Component;
+
+
+//@Aspect
+//public class LoginAspect {
+//	public void logBefore(JoinPoint joinpoint) {
+//		
+//	}
+//}

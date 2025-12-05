@@ -1,0 +1,9 @@
+package com.demo.da;
+
+import com.demo.beans.Products;
+
+public interface InheritanceDao {
+
+	boolean showSingleType(Products p1, Products p2);
+
+}

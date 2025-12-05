@@ -1,0 +1,19 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "carttable1")
+public class Carts {
+	@Id
+	private int cartid;
+	private double cprice;
+	private int cartqty;
+	@ManyToMany(mappedBy = "cset", cascade = CascadeType.ALL)
+	private Set<Items> iset;
+}

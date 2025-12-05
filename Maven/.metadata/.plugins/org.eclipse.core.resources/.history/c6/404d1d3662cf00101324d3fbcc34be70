@@ -1,0 +1,34 @@
+package com.demo.dao;
+
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.demo.beans.Items;
+
+public class ManyToManyDaoImpl implements ManyToManyDao {
+	static SessionFactory sf;
+	static {
+		sf = new Configuration().configure().buildSessionFactory();
+	}
+
+	@Override
+	public boolean showManyToMany(Set<Items> items) {
+		if (sf != null) {
+			try (Session session = sf.openSession()) {
+				Transaction tr = session.beginTransaction();
+
+				for (Items i : items) {
+					session.save(i); // due to cascade it saves a cart data too.
+				}
+				tr.commit();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return false;
+	}
+}

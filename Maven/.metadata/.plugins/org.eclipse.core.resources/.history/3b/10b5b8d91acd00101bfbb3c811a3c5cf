@@ -1,0 +1,21 @@
+package com.demo.test;
+
+import java.util.Scanner;
+
+public class CourseManagementSystem {
+
+	public static void main(String[] args) {
+		try (Scanner sc = new Scanner(System.in)) {
+			System.out.println("1. Insert Data");
+			System.out.println("2. Show Data");
+			System.out.println("3. Update Data");
+			System.out.println("4. Delete Data");
+			System.out.println("5. Exit");
+			System.out.print("Choice : ");
+			int n = sc.nextInt();
+		} catch (Exception e) {
+			System.out.println("Error : " + e.getMessage());
+		}
+	}
+
+}

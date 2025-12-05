@@ -1,0 +1,14 @@
+package com.demo.dao;
+
+import java.util.Set;
+
+import com.demo.beans.Carts;
+import com.demo.beans.Items;
+
+public interface CartDao {
+
+	boolean showManyToMany(Set<Items> iset, Set<Carts> cset);
+
+	Set<Carts> getData(Set<Integer> cids);
+
+}

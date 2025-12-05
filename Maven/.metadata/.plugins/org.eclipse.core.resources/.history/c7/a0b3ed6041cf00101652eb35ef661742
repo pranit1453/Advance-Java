@@ -1,0 +1,10 @@
+package com.demo.beans;
+
+import java.util.Set;
+
+public class Items {
+	private int itemid;
+	private String itemname;
+	private int itemqty;
+	private Set<Carts> cset;
+}

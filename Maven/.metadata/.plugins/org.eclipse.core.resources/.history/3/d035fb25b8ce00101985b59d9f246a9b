@@ -1,0 +1,13 @@
+package com.demo.dao;
+
+import java.util.Set;
+
+import com.demo.beans.Course;
+
+public interface CourseDao {
+
+	boolean showOneToMany(Course c);
+
+	Set<Course> getData(Set<Integer> cset);
+
+}

@@ -1,0 +1,34 @@
+package com.demo.da;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.demo.beans.Products;
+
+public class InheritanceDaoImpl implements InheritanceDao {
+	static SessionFactory sf;
+	static {
+		sf = HibernateConnect.getMySessionFactory();
+	}
+
+	@Override
+	public boolean showSingleType(Products p1, Products p2) {
+
+		if (sf != null) {
+			try (Session session = sf.openSession()) {
+				Transaction tr = session.beginTransaction();
+
+				session.save(p1);
+				session.save(p2);
+
+				tr.commit();
+				return true;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
+		return false;
+	}
+}

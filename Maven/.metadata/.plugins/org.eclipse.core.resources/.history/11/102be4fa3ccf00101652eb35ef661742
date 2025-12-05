@@ -1,0 +1,9 @@
+package com.demo.dao;
+
+import com.demo.beans.Students;
+
+public interface StudentDao {
+
+	boolean showManyToOne(Students s);
+
+}

@@ -1,0 +1,36 @@
+package com.demo.services;
+
+import java.util.Scanner;
+
+import com.demo.beans.Items;
+import com.demo.dao.CartDao;
+import com.demo.dao.CartDaoImpl;
+
+public class CartServiceImpl implements CartService {
+	private CartDao cdao;
+
+	public CartServiceImpl() {
+		cdao = new CartDaoImpl();
+	}
+
+	@Override
+	public boolean showManyToMany() {
+		try (Scanner sc = new Scanner(System.in)) {
+			System.out.println("---Enter Item Details---");
+			System.out.print("Enter item id : ");
+			int iid = sc.nextInt();
+			sc.nextLine();
+
+			System.out.print("Enter item name : ");
+			String iname = sc.next();
+
+			System.out.print("Enter item Quantity : ");
+			int iqty = sc.nextInt();
+			sc.nextLine();
+
+			Items i = new Items(iid, iname, iqty);
+		}
+
+		return false;
+	}
+}

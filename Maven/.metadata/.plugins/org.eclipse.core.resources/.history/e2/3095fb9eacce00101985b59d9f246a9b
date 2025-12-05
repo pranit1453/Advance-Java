@@ -1,0 +1,71 @@
+package com.demo.beans;
+
+import java.time.LocalDate;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "studenttable")
+public class Students {
+	@Id
+	private int sid;
+	private String sname;
+	private LocalDate joindate;
+	@ManyToOne(fetch = FetchType.LAZY) // by default fetch is eager
+	private Set<Course> cset;
+
+	public Students() {
+		super();
+	}
+
+	public Students(int sid, String sname, LocalDate joindate, Set<Course> cset) {
+		super();
+		this.sid = sid;
+		this.sname = sname;
+		this.joindate = joindate;
+		this.cset = cset;
+	}
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+	public LocalDate getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(LocalDate joindate) {
+		this.joindate = joindate;
+	}
+
+	public Set<Course> getCset() {
+		return cset;
+	}
+
+	public void setCset(Set<Course> cset) {
+		this.cset = cset;
+	}
+
+	@Override
+	public String toString() {
+		return "Students [sid=" + sid + ", sname=" + sname + ", joindate=" + joindate + ", cset=" + cset + "]";
+	}
+
+}

@@ -1,0 +1,9 @@
+package com.demo.test;
+
+public class ManyToManyRelationship {
+
+	public static void main(String[] args) {
+
+	}
+
+}

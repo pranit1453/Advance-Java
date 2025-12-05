@@ -1,0 +1,14 @@
+package com.demo.test;
+
+import java.util.Scanner;
+
+import com.demo.services.InheritanceServices;
+import com.demo.services.InheritanceServicesImpl;
+
+public class InheritanceTypeInHibernate {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

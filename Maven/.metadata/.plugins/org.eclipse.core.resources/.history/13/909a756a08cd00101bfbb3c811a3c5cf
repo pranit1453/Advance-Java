@@ -1,0 +1,73 @@
+package com.demo.beans;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "coursedetail")
+public class Course {
+	@Id
+	@GeneratedValue
+	private int courseid;
+	private String coursename;
+	private int duration;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "facid")
+	private Faculty faculty;
+
+	public Course() {
+		super();
+	}
+
+	public Course(String coursename, int duration, Faculty faculty) {
+		super();
+
+		this.coursename = coursename;
+		this.duration = duration;
+		this.faculty = faculty;
+	}
+
+	public int getCourseid() {
+		return courseid;
+	}
+
+	public void setCourseid(int courseid) {
+		this.courseid = courseid;
+	}
+
+	public String getCoursename() {
+		return coursename;
+	}
+
+	public void setCoursename(String coursename) {
+		this.coursename = coursename;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public Faculty getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [courseid=" + courseid + ", coursename=" + coursename + ", duration=" + duration + ", faculty="
+				+ faculty + "]";
+	}
+
+}

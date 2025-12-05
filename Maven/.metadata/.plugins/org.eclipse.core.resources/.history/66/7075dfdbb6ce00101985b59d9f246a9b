@@ -1,0 +1,82 @@
+package com.demo.beans;
+
+import java.time.LocalDate;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "coursetable1")
+public class Course {
+	@Id
+	private int cid;
+	private String cname;
+	private LocalDate startdate;
+	/*
+	 * when you perform an operation on a parent entity, the same operation is
+	 * automatically applied to its child entities.
+	 */
+	@OneToMany(mappedBy = "cse", cascade = CascadeType.ALL) // by default lazy fetch
+	private Set<Students> sset;
+
+	public Course() {
+		super();
+	}
+
+	public Course(int cid, String cname, LocalDate startdate, Set<Students> sset) {
+		super();
+		this.cid = cid;
+		this.cname = cname;
+		this.startdate = startdate;
+		this.sset = sset;
+	}
+
+	public Course(int cid, String cname, LocalDate startdate) {
+		super();
+		this.cid = cid;
+		this.cname = cname;
+		this.startdate = startdate;
+	}
+
+	public int getCid() {
+		return cid;
+	}
+
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public LocalDate getStartdate() {
+		return startdate;
+	}
+
+	public void setStartdate(LocalDate startdate) {
+		this.startdate = startdate;
+	}
+
+	public Set<Students> getSset() {
+		return sset;
+	}
+
+	public void setSset(Set<Students> sset) {
+		this.sset = sset;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [cid=" + cid + ", cname=" + cname + ", startdate=" + startdate + ", sset=" + sset + "]";
+	}
+
+}
